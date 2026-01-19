@@ -1,4 +1,4 @@
 // 
 
-const catMe= require("Cat-me");
+const catMe= require("cat-me");
 console.log(catMe());
