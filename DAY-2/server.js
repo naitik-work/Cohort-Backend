@@ -9,5 +9,8 @@ app.get('/',(req,res)=>{
 app.get('/about',(req,res)=>{
     res.send('Hello Naitik')
 })
+app.get('/home',(req,res)=>{
+    res.send('Home Page')
+})
 
 app.listen(3000) //server start krna
