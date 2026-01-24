@@ -14,5 +14,10 @@ app.get('/about',(req,res)=>{
 app.get('/info',(req,res)=>{
     res.send("NAitik info ABOUT PAGE")
 })
+app.get('/infonaitik',(req,res)=>{
+    res.send("NAitikChitransh info ABOUT PAGE")
+})
 
-app.listen(3000);
+app.listen(3000,()=>{
+    console.log('Server is running on port 3000!')
+}); //to start the server
