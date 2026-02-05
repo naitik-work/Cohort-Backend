@@ -1,10 +1,15 @@
-//server ko start krna and config krna happens here.
+//server ko CREATE krna and config krna happens here.
 
 const express= require("express");
 const noteModel= require('./models/note.model')
+const cors= require("cors");
+
+
 const app= express(); //CREATING INSTANCE OF THE SERVER.
 app.use(express.json()); //middleware
+app.use(cors());
 //-POST /api/notes
+ 
 //-create new note and save data in mongodb
 //-req.body = {titile,description}
 
