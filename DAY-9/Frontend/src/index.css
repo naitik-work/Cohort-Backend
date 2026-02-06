@@ -28,3 +28,27 @@ html{
   max-width: 20rem;
   color: white;
 }
+.note-create-form{
+  display: flex;
+  gap: 1rem;
+  padding-inline: 3rem;
+  padding-block: 1rem; 
+}
+.delete{
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 2px 1px;
+  border-radius: 5px;
+}
+.update{
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  background-color: rgb(2, 78, 76);
+  color: white;
+  font-weight: bold;
+  padding: 2px 1px;
+  border-radius: 5px;
+}
