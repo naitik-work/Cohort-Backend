@@ -3,11 +3,16 @@
 const express= require("express");
 const noteModel= require('./models/note.model')
 const cors= require("cors");
-
+const path= require('path');
 
 const app= express(); //CREATING INSTANCE OF THE SERVER.
 app.use(express.json()); //middleware
 app.use(cors());
+
+//http://localhost:3000/assets/index-BpE1wl4G.js
+
+//http://localhost:3000/assets/index-Ben9sXv7.css
+app.use(express.static('./public')); //for unexpected API calls
 //-POST /api/notes
  
 //-create new note and save data in mongodb
@@ -57,11 +62,15 @@ app.delete('/api/notes/:id',async (req,res)=>{
 
 app.patch('/api/notes/:id',async (req,res)=>{
     const id = req.params.id;
-    const {description}= req.body;
-    await noteModel.findByIdAndUpdate(id, {description});
+    const {title,description}= req.body;
+    await noteModel.findByIdAndUpdate(id, {title,description});
 
     res.status(200).json({
         message:"Note updated successfully."
     })
+})
+
+app.use('*name',(req,res)=>{ 
+    res.sendFile(path.join(__dirname,"..","/public/index.html")); 
 })
 module.exports = app;
