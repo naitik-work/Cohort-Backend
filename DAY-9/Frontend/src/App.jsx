@@ -56,7 +56,7 @@ const App = () => {
     
     //checking if either of the fields are empty!
     if (!newTitle || !newDescription) return alert("Both fields required!");
-    
+
     axios.patch('http://localhost:3000/api/notes/'+noteId,{
       title: newTitle,
       description: newDescription
@@ -84,8 +84,11 @@ const App = () => {
         return <div key={id} className="note">
                   <h1>{note.title}</h1>
                   <p>{note.description}</p>
-                  <button className='delete' onClick={()=>{handleDeleteNote(note._id)}}>Delete</button>
-                  <button className='update'onClick={()=>{handleUpdateNote(note._id)}}>Update</button>
+                  <div className='buttons'>
+                          <button className='delete' onClick={()=>{handleDeleteNote(note._id)}}>Delete</button>
+                          <button className='update'onClick={()=>{handleUpdateNote(note._id)}}>Update</button>
+                  </div>
+
                </div>
         })
       }

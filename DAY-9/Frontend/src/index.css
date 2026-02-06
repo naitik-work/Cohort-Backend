@@ -36,19 +36,24 @@ html{
 }
 .delete{
   margin-right: 1rem;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
   background-color: red;
   color: white;
   font-weight: bold;
   padding: 2px 1px;
   border-radius: 5px;
+  justify-content: flex-start;
 }
 .update{
-  margin-left: 1rem;
-  margin-top: 0.5rem;
+  /* margin-left: 1rem;
+  margin-top: 0.5rem; */
   background-color: rgb(2, 78, 76);
   color: white;
   font-weight: bold;
   padding: 2px 1px;
   border-radius: 5px;
+  justify-content: flex-end;
+}
+.buttons{
+  display: flex;
 }
