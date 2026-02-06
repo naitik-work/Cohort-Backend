@@ -8,7 +8,7 @@ const App = () => {
   console.log("Hello integration!")
 
   function fetchNotes(){
-      axios.get('http://localhost:3000/api/notes')
+      axios.get('https://cohort-backend-yfoq.onrender.com/api/notes')
       .then((res)=>{
       setNotes(res.data.notes); 
       })
@@ -26,7 +26,7 @@ const App = () => {
     console.log(title.value,description.value);
     
     //Creating notes at the server from frontend using axios.
-    axios.post('http://localhost:3000/api/notes', {
+    axios.post('https://cohort-backend-yfoq.onrender.com/api/notes', {
       title: title.value,
       description: description.value
     })
@@ -41,7 +41,7 @@ const App = () => {
 
   function handleDeleteNote(noteId){
     console.log(noteId);
-    axios.delete("http://localhost:3000/api/notes/"+noteId)
+    axios.delete("https://cohort-backend-yfoq.onrender.com/notes/"+noteId)
     .then((res)=>{
       console.log(res.data);
       fetchNotes()
@@ -57,7 +57,7 @@ const App = () => {
     //checking if either of the fields are empty!
     if (!newTitle || !newDescription) return alert("Both fields required!");
 
-    axios.patch('http://localhost:3000/api/notes/'+noteId,{
+    axios.patch('https://cohort-backend-yfoq.onrender.com/notes/'+noteId,{
       title: newTitle,
       description: newDescription
     })
