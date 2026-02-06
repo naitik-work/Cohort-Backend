@@ -41,7 +41,7 @@ const App = () => {
 
   function handleDeleteNote(noteId){
     console.log(noteId);
-    axios.delete("https://cohort-backend-yfoq.onrender.com/notes/"+noteId)
+    axios.delete("https://cohort-backend-yfoq.onrender.com/api/notes/"+noteId)
     .then((res)=>{
       console.log(res.data);
       fetchNotes()
@@ -57,7 +57,7 @@ const App = () => {
     //checking if either of the fields are empty!
     if (!newTitle || !newDescription) return alert("Both fields required!");
 
-    axios.patch('https://cohort-backend-yfoq.onrender.com/notes/'+noteId,{
+    axios.patch('https://cohort-backend-yfoq.onrender.com/api/notes/'+noteId,{
       title: newTitle,
       description: newDescription
     })
