@@ -50,8 +50,16 @@ const App = () => {
 
   function handleUpdateNote(noteId){
     console.log(noteId);
+    
+    const newTitle= prompt("Enter new title:");
+    const newDescription= prompt("Enter new description:");
+    
+    //checking if either of the fields are empty!
+    if (!newTitle || !newDescription) return alert("Both fields required!");
+    
     axios.patch('http://localhost:3000/api/notes/'+noteId,{
-      description: Modified
+      title: newTitle,
+      description: newDescription
     })
     .then((res)=>{
       console.log(res.data);
