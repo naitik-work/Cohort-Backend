@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 const App = () => {
 
   const [notes, setNotes] = useState([]);
-  console.log("Hello integration!")
+
 
   function fetchNotes(){
       axios.get('https://cohort-backend-yfoq.onrender.com/api/notes')
