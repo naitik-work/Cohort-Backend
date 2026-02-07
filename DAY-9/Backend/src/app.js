@@ -70,7 +70,7 @@ app.patch('/api/notes/:id',async (req,res)=>{
     })
 })
 
-app.use('*name',(req,res)=>{ 
-    res.sendFile(path.join(__dirname,"..","/public/index.html")); 
-})
+// app.use('*name',(req,res)=>{ 
+//     res.sendFile(path.join(__dirname,"..","/public/index.html")); 
+// })
 module.exports = app;
