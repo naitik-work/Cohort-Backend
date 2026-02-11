@@ -5,7 +5,7 @@ const app= express(); //server instantiated
 const authRouter= require('./routes/auth.routes');
 const cookieParser= require('cookie-parser');
 
-
+//commit
 
 app.use(cookieParser());
 app.use(express.json()); //middleware to read data from req.body
