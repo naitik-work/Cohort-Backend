@@ -40,5 +40,40 @@ authRouter.post('/register', async(req,res)=>{
 
 })
 
+authRouter.get('/get-me', async(req,res)=>{
+    const token= req.cookies.token;
 
+    const decoded= jwt.verify(token, process.env.JWT_SECRET);
+
+    const user= await userModel.findById(decoded.id);
+
+    res.json({
+        name: user.name,
+        email: user.email,
+    })
+})
+
+authRouter.post("/login", async(req,res)=>{
+    const {email, password}= req.body;
+
+    const user= await userModel.findOne({email});
+
+    if(!user){
+        res.status(400).json({
+            message: "User does not exist."
+        })
+    }
+
+    const userPassword= user.password === crypto.createHash('md5').update(password).digest('hex');
+
+    if(!userPassword){
+        res.status(400).json({
+            message:"Incorrect password."
+        })
+    }
+
+    res.status(201).json({
+        message:`${user.name} logged in.`
+    })
+})
 module.exports= authRouter;
