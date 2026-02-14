@@ -8,7 +8,7 @@ authRouter.post('/register',async (req,res)=>{
 
     const isUserAlreadyExists= await userModel.findOne({email});//condition ke basis pe find krta hai here it is email.
     if(isUserAlreadyExists){
-        return res.status(400).json({
+        return res.status(409).json({
             message: "User already exists with the same email."
         })
     }
@@ -41,6 +41,39 @@ authRouter.post('/protected',(req,res)=>{
 
     res.status(200).json({
         message:"This is a protected route.",
+    })
+}) 
+
+/* 
+Controller-> wo callback jo kisi particular API call pe invoke ho, usey controller khte hai.
+*/
+
+authRouter.post("/login", async(req,res)=>{
+    const {email, password}= req.body;
+
+    const user= await userModel.findOne({email});
+    if(!user){
+        res.status(400).json({
+            message: "User email does not exist!"
+        })
+    }
+    const userPassword= user.password===password
+    if(!userPassword){
+        res.status(400).json({
+            message:"Incorrect password."
+        })
+    }
+
+    const token= jwt.sign({
+        id: user._id
+    }
+    ,process.env.JWT_SECRET)
+
+    res.cookie("jwt_token", token);
+
+    res.status(200).json({
+        message:`${user.name} logged in, welcome`,
+        user,
     })
 })
 
