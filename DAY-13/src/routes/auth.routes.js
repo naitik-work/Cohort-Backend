@@ -37,10 +37,10 @@ authRouter.post('/register',async (req,res)=>{
 
 
 authRouter.post('/protected',(req,res)=>{
-    console.log(req.cookies);
+    console.log(req.cookies); //object form me data output aata hai.
 
-    res.send(200),json({
-        message:"This is a protected route."
+    res.status(200).json({
+        message:"This is a protected route.",
     })
 })
 
