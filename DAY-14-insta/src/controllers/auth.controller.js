@@ -67,6 +67,11 @@ async function loginController(req,res){
     
     const userPassword= user.password===hash;
 
+    if(!userPassword){
+        return res.status(401).json({
+            message: "password invalid"
+        })
+    }
     const token= jwt.sign({
         user: user._id
     },
