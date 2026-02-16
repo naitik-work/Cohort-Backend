@@ -1,5 +1,5 @@
 ==>Authentication
-  =>register
+  =>register (1. user ka data save krna. 2.token user ko dena)
   =>login
   =>logout(token blacklisting)
   =>[OTP based registration]
