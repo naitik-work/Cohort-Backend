@@ -1,6 +1,7 @@
 const userModel= require("../models/user.model");
 const crypto= require("crypto");
 const jwt= require("jsonwebtoken");
+const bcrypt= require("bcryptjs");
 
 async function registerController(req,res){
 
@@ -18,7 +19,7 @@ async function registerController(req,res){
         })
     }
 
-    const hash= crypto.createHash('sha256').update(password).digest('hex');//hashing on the password.
+    const hash= bcrypt.hash(password,10)//hashing on the password.
 
     const user= await userModel.create({
         username,
@@ -62,10 +63,8 @@ async function loginController(req,res){
             message: "Username or email is not registered."
         })
     }
-
-    const hash= crypto.createHash('sha256').update(password).digest('hex');
     
-    const userPassword= user.password===hash;
+    const userPassword= bcrypt.compare(password,user.password);
 
     if(!userPassword){
         return res.status(401).json({
