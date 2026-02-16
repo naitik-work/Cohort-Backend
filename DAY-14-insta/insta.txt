@@ -22,3 +22,11 @@ user={
   bio:String,
   profile_image:String
 }
+
+#POST FEATURE
+  {
+    caption: String,
+    img_url: String,
+    user: userId,
+    createdAt: Date-time,
+  }

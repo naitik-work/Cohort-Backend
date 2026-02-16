@@ -19,7 +19,7 @@ async function registerController(req,res){
         })
     }
 
-    const hash= bcrypt.hash(password,10)//hashing on the password.
+    const hash= await bcrypt.hash(password,10)//hashing on the password.
 
     const user= await userModel.create({
         username,
@@ -64,7 +64,7 @@ async function loginController(req,res){
         })
     }
     
-    const userPassword= bcrypt.compare(password,user.password);
+    const userPassword= await bcrypt.compare(password,user.password);
 
     if(!userPassword){
         return res.status(401).json({
