@@ -20,7 +20,7 @@ const userSchema= new mongoose.Schema({
     },
     profile_image: {
         type:String,
-        // default:
+        default:"https://ik.imagekit.io/FASK13YW/defaultUserImg.webp"
     }
 })
 

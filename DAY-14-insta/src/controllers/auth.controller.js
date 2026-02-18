@@ -3,6 +3,7 @@ const crypto= require("crypto");
 const jwt= require("jsonwebtoken");
 const bcrypt= require("bcryptjs");
 
+
 async function registerController(req,res){
 
     const {username, password, email, bio, profile_image}= req.body;
