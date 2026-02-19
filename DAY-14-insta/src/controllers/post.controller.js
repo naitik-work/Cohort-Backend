@@ -80,7 +80,7 @@ async function getPostController(req,res){
      })
 }
 
-async function getPostDetailsController(){
+async function getPostDetailsController(req,res){
     const token= req.cookies.token;
 
     if(!token){
@@ -102,7 +102,7 @@ async function getPostDetailsController(){
     const userId= decoded.id;
     const postId= req.params.postId;
 
-    const post= await postModel.findById({postId});
+    const post= await postModel.findById(postId);
 
     if(!post){
         res.status(404).json({
@@ -110,7 +110,7 @@ async function getPostDetailsController(){
         })
     }
 
-    const isValidUser = post.user.toString()===userId;
+    const isValidUser = (post.user.toString()===userId);
 
     if (!isValidUser) {
         return res.status(403).json({
