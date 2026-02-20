@@ -30,3 +30,5 @@ user={
     user: userId,
     createdAt: Date-time,
   }
+
+  //edge collection documentation and indexing {learn understanding documentation}
