@@ -126,7 +126,7 @@ async function getPostDetailsController(req,res){
 }
 
 
-module.exports = {
+module.exports = {      
     createPostController,
     getPostController,
     getPostDetailsController
