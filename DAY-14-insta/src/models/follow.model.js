@@ -14,6 +14,9 @@ const followSchema = new mongoose.Schema(
   },
 );
 
+//koi ek user kisi ko ek hee bar follow kre ye make sure hota hai isse.
+followSchema.index({ follower:1, followee:1}, {unique: true})
+
 const followModel= mongoose.model("follows", followSchema);
 
 module.exports= followModel;
