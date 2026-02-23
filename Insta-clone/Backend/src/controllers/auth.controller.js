@@ -15,7 +15,7 @@ async function registerController(req,res){
         ]
     })
     if(isUserAlreadyExists){
-        res.status(409).json({
+        return res.status(409).json({
             message: "User already exists."+(isUserAlreadyExists.email===email?"Email already exists":"Username already exists.")
         })
     }
@@ -61,7 +61,7 @@ async function loginController(req,res){
     })
 
     if(!user){
-        res.status(400).json({
+       return res.status(400).json({
             message: "Username or email is not registered."
         })
     }
@@ -74,7 +74,7 @@ async function loginController(req,res){
         })
     }
     const token= jwt.sign({
-        user: user._id,
+        id: user._id,
         username: user.username
     },
         process.env.JWT_SECRET,
@@ -95,7 +95,24 @@ async function loginController(req,res){
 
 }
 
+async function getMeController(req,res){
+    const userId= req.user.id;
+    const user= await userModel.findById(userId);
+
+    res.status(200).json({
+        message: "User data fetched successfully",
+        user: {
+            username: user.username,
+            email: user.email,
+            bio: user.bio,
+            profile_image: user.profile_image
+        }
+    })
+    }
+
+
 module.exports= {
     registerController,
-    loginController
+    loginController,
+    getMeController
 }
